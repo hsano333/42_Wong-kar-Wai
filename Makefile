@@ -8,7 +8,7 @@ LIBFT		:=
 OBJDIR		:= ./obj
 
 SRCDIR	:= ./srcs/
-SRC	:= init.c menu.c print_borad.c numbers.c two_powers.c
+SRC	:= init.c menu.c print_borad.c numbers.c two_powers.c play.c board.c
 ENTRY	:= main.c
 ENTRYBONUS	:= main_bonus.c
 DELENTRY	:= $(OBJDIR)/main_bonus.o

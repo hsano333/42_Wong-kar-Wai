@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 20:55:30 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/30 22:37:31 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <locale.h>
 
 #define AA_SIZE 8
+#define ESC_KEY 27
+//#define UP_KEY
 
 typedef struct s_game
 {
@@ -27,6 +29,7 @@ typedef struct s_game
 	int		grid_row_size;
 	int		grid_col_size;
 	int		board[5][5];
+	int		score;
 	WINDOW	*win;	
 
 }	t_game;
@@ -56,7 +59,9 @@ enum e_number
 	V65536 = 65536,
 };
 
-void	init(t_game *game);
+int		init(t_game *game);
 void	menu(t_game *game);
 void	update_board(t_game *game);
+void	play(t_game *game);
+void	send_key_board(int key, t_game *game);
 #endif

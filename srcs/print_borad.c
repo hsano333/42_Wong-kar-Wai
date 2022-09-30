@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:32:23 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 21:02:32 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/30 22:15:31 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	get_aa_number_wrapper(int row, char *line, int number)
 		get_aa_str32768(row, line);
 	else if (number == V65536)
 		get_aa_str65536(row, line);
+	//printw("%s",line);
 }
 
 void	update_board(t_game *game)
@@ -93,35 +94,6 @@ void	update_board(t_game *game)
 	//printw("game:%p\n", game);
 	//
 	//
-	game->board[0][0] = V2;
-	game->board[0][1] = V4;
-	game->board[0][2] = V8;
-	game->board[0][3] = V16;
-	game->board[0][4] = V32;
-
-	game->board[1][0] = V64;
-	game->board[1][1] = V128;
-	game->board[1][2] = V256;
-	game->board[1][3] = V512;
-	game->board[1][4] = V1024;
-
-	game->board[2][0] = V2048;
-	game->board[2][1] = V4096;
-	game->board[2][2] = V8192;
-	game->board[2][3] = V16384;
-	game->board[2][4] = V32768;
-
-	game->board[3][0] = V65536;
-	game->board[3][1] = V4096;
-	game->board[3][2] = V8192;
-	game->board[3][3] = V16384;
-	game->board[3][4] = V32768;
-
-	game->board[4][0] = V2;
-	game->board[4][1] = V4;
-	game->board[4][2] = V8;
-	game->board[4][3] = V16;
-	game->board[4][4] = V32;
 	
 	row = 0;
 	row_max = AA_SIZE;

@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   play.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 22:32:08 by hsano            ###   ########.fr       */
+/*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
+/*   Updated: 2022/09/30 22:16:00 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 #include "unistd.h"
 
-int main(void)
+void	play(t_game *game)
 {
-	t_game	game;
+	int	c;
 
-    game.win = initscr();
-	if (!init(&game))
+	printf("game:%p\n", game);
+	while (1)
 	{
-		printf("invalid win value");
-		return (false);
+
+		if ((c = getch()) != ERR) {
+			clear();
+			if (c == 27)
+				break ;
+			else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT)
+			{
+				printw("key=%d\n", c);
+				send_key_board(c, game);
+			}
+			printw("%d\n", c);
+			refresh();
+
+
+
+
+		}
+		usleep(1000);
+		//update_board(game);
 	}
-	refresh();
-	usleep(1000000);
-
-	menu(&game);
-	//printw("%s\n", two[8]);
-	printw("update board \n");
-	update_board(&game);
-	refresh();
-	usleep(1000000);
-
-	play(&game);
-
-	endwin();
 }
