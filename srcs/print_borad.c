@@ -6,13 +6,14 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:32:23 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 23:30:41 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 01:29:29 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 #include "numbers.h"
 
+/*
 static void	set_frame(t_game *game, char *line)
 {
 	line[0] = '|';
@@ -26,6 +27,7 @@ static void	set_frame(t_game *game, char *line)
 	else
 		line[165] = '\0';
 }
+*/
 
 void	print_row_line(t_game *game)
 {
@@ -38,9 +40,10 @@ void	print_row_line(t_game *game)
 	printw("%s\n", line);
 }
 
-void	get_aa_number_wrapper(int row, char *line, int number)
+void	get_aa_number_wrapper(int row, int number)
 {
 	int	i;
+	char	line[41];
 
 	i = 0;
 	while (i < 40)
@@ -79,12 +82,38 @@ void	get_aa_number_wrapper(int row, char *line, int number)
 		get_aa_str32768(row, line);
 	else if (number == V65536)
 		get_aa_str65536(row, line);
-	//printw("%s",line);
+	line[40] = '\0';
+	printw("%s",line);
+}
+
+void	print_pipe(void)
+{
+	attron(COLOR_PAIR(1));
+	printw("%c", '|');
+}
+
+void	print_one_frame_line(t_game *game, int row, int frame_row)
+{
+	print_pipe();
+	get_aa_number_wrapper(frame_row, game->board[row][0]);
+	print_pipe();
+	get_aa_number_wrapper(frame_row, game->board[row][1]);
+	print_pipe();
+	get_aa_number_wrapper(frame_row, game->board[row][2]);
+	print_pipe();
+	get_aa_number_wrapper(frame_row, game->board[row][3]);
+	print_pipe();
+	if (game->grid_col_size == 5)
+	{
+		get_aa_number_wrapper(frame_row, game->board[row][4]);
+		print_pipe();
+	}
+	printw("\n");
 }
 
 void	update_board(t_game *game)
 {
-	char	line[256];
+	//char	line[256];
 	int		row;
 	int		frame_row;
 	int		row_max;
@@ -105,13 +134,8 @@ void	update_board(t_game *game)
 		frame_row = 0;
 		while (frame_row < AA_SIZE)
 		{
-			get_aa_number_wrapper(frame_row, &line[1], game->board[row][0]);
-			get_aa_number_wrapper(frame_row, &line[42], game->board[row][1]);
-			get_aa_number_wrapper(frame_row, &line[83], game->board[row][2]);
-			get_aa_number_wrapper(frame_row, &line[124], game->board[row][3]);
-			get_aa_number_wrapper(frame_row, &line[165], game->board[row][4]);
-			set_frame(game, line);
-			printw("%s\n", line);
+			print_one_frame_line(game, row, frame_row);
+			//printw("%s\n", line);
 			frame_row++;
 		}
 		row++;
