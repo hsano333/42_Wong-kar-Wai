@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 19:19:33 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 00:03:43 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void menu(t_game *game)
 	//t_game	game;
 
 	game->win_value = WIN_VALUE;
-	game->grid_row_size= 5;
-	game->grid_col_size= 5;
+	game->grid_row_size= 4;
+	game->grid_col_size= 4;
 }
 

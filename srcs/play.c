@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 22:16:00 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/30 23:30:40 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	play(t_game *game)
 	printf("game:%p\n", game);
 	while (1)
 	{
-
 		if ((c = getch()) != ERR) {
 			clear();
 			if (c == 27)
@@ -32,10 +31,6 @@ void	play(t_game *game)
 			}
 			printw("%d\n", c);
 			refresh();
-
-
-
-
 		}
 		usleep(1000);
 		//update_board(game);

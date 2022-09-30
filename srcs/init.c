@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 22:38:16 by hsano            ###   ########.fr       */
+/*   Updated: 2022/09/30 23:33:39 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	init_color_pair(void)
 	init_pair(8, COLOR_RED, COLOR_BLACK);
 	init_pair(9, COLOR_GREEN, COLOR_BLACK);
 	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
-	bkgd(3);
-	attrset(2);
+	//bkgd(3);
+	//attrset(2);
 	attron(COLOR_PAIR(4));
 
 	if (has_colors())
