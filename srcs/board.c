@@ -34,7 +34,7 @@ void	add_new_number(t_game *game)
 
 static void	plus_next(t_game *game, int *now, int *next, bool *front)
 {
-	if (*now == *next && !*front)
+	if (*now && *now == *next && !*front)
 	{
 		*next *= 2;
 		*now = 0;
@@ -115,7 +115,7 @@ void	send_key_board(int key, t_game *game)
 		status = check_board(game);
 		if ((!status || status == 1) && !game->end_flag)
 			add_new_number(game);
-		update_board(game);
 	}
+	update_board(game);
 	//refresh();
 }
