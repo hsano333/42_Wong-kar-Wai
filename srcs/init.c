@@ -3,6 +3,7 @@
 void set_timeout(int time) {
 	time = 1;
 	timeout(1);
+	(void)time;
 }
 
 static void	init_color_pair(void)
@@ -11,7 +12,6 @@ static void	init_color_pair(void)
 
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
-	j = 0;
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_RED, COLOR_BLACK);
 	init_pair(4, COLOR_BLUE, COLOR_BLACK);
@@ -75,6 +75,7 @@ int	init(t_game *game)
 
 	game->score = 0;
 	game->win_flag = 0;
+	game->end_flag = 0;
 	if (!check_win_value())
 		return (false);
 	game->win_value = WIN_VALUE;

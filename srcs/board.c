@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   board.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 22:02:05 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:42:31 by smiyu            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "game2048.h"
 
 /*
@@ -111,7 +99,7 @@ static void	move_board_number(const int start, const int end, const int dir, t_g
 
 void	send_key_board(int key, t_game *game)
 {
-	// int	status;
+	int	status;
 
 	if (key == KEY_UP)
 		move_board_number(0, game->grid_row_size - 1, 0, game);
@@ -121,8 +109,8 @@ void	send_key_board(int key, t_game *game)
 		move_board_number(0, game->grid_col_size - 1, 1, game);
 	else if (key == KEY_RIGHT)
 		move_board_number(game->grid_col_size - 1, 0, 1, game);
-	// status = check_board(game);
-	// if (/* status == 0 && !end_flag || */ status == 1)
+	status = check_board(game);
+	if ((!status || status == 1) && !game->end_flag)
 		add_new_number(game);
 	update_board(game);
 	//refresh();

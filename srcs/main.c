@@ -65,12 +65,13 @@ int main(void)
 	refresh();
 	//usleep(1000000);
 
+	printf("");
 	menu(&game);
 	test(&game);
 	//printw("%s\n", two[8]);
 	//printw("update board \n");
 	//update_board(&game);
-	//refresh();
+	// refresh();
 	//usleep(1000000);
 
 	if (!game.end_flag)

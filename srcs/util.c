@@ -2,12 +2,7 @@
 
 void	clear_board(t_game *game)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < 5)
-		while (j < 5)
-			game->board[i++][j++] = 0; // test
+	for (int i = 0; i < 5; i ++)
+		for (int j = 0; j < 5; j ++)
+			game->board[i][j] = 0; // test
 }

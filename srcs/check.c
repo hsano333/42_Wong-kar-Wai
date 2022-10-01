@@ -3,13 +3,11 @@
 static bool	check_board_win(t_game *game, int i, int j)
 {
 	if (game->board[i][j] == V2048)
-	{
-		/* end_falg */
-		return (true);
-	}
+		game->end_flag = true;
+
 	if (game->board[i][j] == game->win_value)
 	{
-		// win_flag
+		game->win_flag = true;
 		return (true);
 	}
 	else
@@ -56,7 +54,7 @@ int	check_board(t_game *game)
 		return (2);
 	else
 	{
-		// end_flag
+		game->end_flag = true;
 		return (3);
 	}
 }
