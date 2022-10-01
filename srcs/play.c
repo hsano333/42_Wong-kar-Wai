@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:47:17 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 22:11:27 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	play(t_game *game)
 			else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT)
 			{
 				clear();
+				send_key_board(c, game);
 				attron(COLOR_PAIR(1));
 				if (game->win_flag)
 				{
@@ -41,7 +42,6 @@ void	play(t_game *game)
 				}
 				else 
 					printw("score:%d, best score:%d\n", game->score, game->max_score);
-				send_key_board(c, game);
 			}
 			refresh();
 		}

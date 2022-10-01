@@ -74,9 +74,6 @@ void	clear_score(t_game *game)
 
 int	init(t_game *game)
 {
-	int	height;
-	int	width;
-
 	game->score = 0;
 	game->win_flag = 0;
 	game->end_flag = 0;
@@ -87,13 +84,10 @@ int	init(t_game *game)
 		game->win_flag = true;
 	init_color_pair();
 	clear_board(game);
-	height = 0;
-	width = 0;
     srand(time(0));
 	set_timeout(1);
 	timeout(1);
 	start_color();
-	getmaxyx(game->win, height, width);
 	keypad(game->win, TRUE);
 	return (true);
 }
