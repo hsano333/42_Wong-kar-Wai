@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:42:44 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 20:44:49 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 22:29:52 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "game2048_bonus.h"
@@ -40,6 +40,7 @@ int main(void)
 	{
 		menu(&game);
 		clear_score(&game);
+		init_board(&game);
 		play(&game);
 		if (game.score > game.best_score[game.mode])
 			set_best_score(&game, game.score);

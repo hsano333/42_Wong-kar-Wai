@@ -66,12 +66,6 @@ int	check_win_value(void)
 	return (false);
 }
 
-void	clear_score(t_game *game)
-{
-	game->score = 0;
-	game->win_flag = false;
-}
-
 int	init(t_game *game)
 {
 	game->score = 0;

@@ -21,7 +21,7 @@ static int	get_random_value(int max)
 	return (rand() % max);
 }
 
-static void	add_new_number(t_game *game)
+void	add_new_number(t_game *game)
 {
 	int	*square;
 

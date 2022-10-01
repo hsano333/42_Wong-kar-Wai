@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 22:11:27 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 22:27:31 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	play(t_game *game)
 {
 	int	c;
 
-	printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
 	update_board(game);
+	printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
 	while (1)
 	{
 		if (game->end_flag)
