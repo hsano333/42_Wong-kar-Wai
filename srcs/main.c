@@ -37,6 +37,7 @@ int main(void)
 	{
 		menu(&game);
 		clear_score(&game);
+		init_board(&game);
 		play(&game);
 		if (game.score > game.best_score[game.mode])
 			game.best_score[game.mode] = game.score;

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:53:53 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 22:32:46 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void menu(t_game *game)
 	while (1)
 	{
 		if ((c = getch()) != ERR) {
-			clear();
 			if (c == ESC_KEY)
 			{
 				game->quit_flag = true;
@@ -96,13 +95,15 @@ void menu(t_game *game)
 			}
 			else if (c == KEY_UP || c == KEY_DOWN)
 			{
+				clear();
 				mode = select_mode(mode, c);
 				print_menu(&tmp_game, mode);
 			}
 			else if (c == ENTER_KEY)
+			{
+				clear();
 				break ;
-			//printw("%d\n", c);
-			//refresh();
+			}
 		}
 	}
 

@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 23:45:53 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 23:55:16 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ enum e_number
 
 int		init(t_game *game);
 void	clear_score(t_game *game);
+void	init_board(t_game *game);
 void	menu(t_game *game);
 void	update_board(t_game *game);
 void	play(t_game *game);
@@ -84,4 +85,5 @@ void	send_key_board(int key, t_game *game);
 void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe);
 void	clear_board(t_game *game);
 int		check_board(t_game *game);
+void	add_new_number(t_game *game);
 #endif
