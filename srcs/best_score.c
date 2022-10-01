@@ -109,7 +109,6 @@ void	write_best_score(t_game *game, int fd, game_mode mode)
 	len = ft_strlen(str_num);
 	str_num[len] = '\n';
 	str_num[len + 1] = '\0';
-	//str_num[len + 1] = '\0';
 	write(fd, str_num, len + 1);
 }
 
