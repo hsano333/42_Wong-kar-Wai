@@ -42,7 +42,8 @@ static void	plus_next(t_game *game, int *now, int *next, bool *front)
 		game->moved = true;
 		game->score += *next;
 	}
-	*front = false;
+	else
+		*front = false;
 }
 
 static void	line_up_properly(t_game *game, int *now, int *next, bool *front)
