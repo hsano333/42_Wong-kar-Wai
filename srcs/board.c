@@ -38,6 +38,7 @@ static void	plus_next(t_game *game, int *now, int *next, bool *front)
 	{
 		*next *= 2;
 		*now = 0;
+		*front = true;
 		game->moved = true;
 		game->score += *next;
 	}
