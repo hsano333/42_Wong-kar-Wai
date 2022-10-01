@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 23:30:40 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 00:42:40 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	play(t_game *game)
 	{
 		if ((c = getch()) != ERR) {
 			clear();
-			if (c == 27)
+			if (c == ESC_KEY)
 				break ;
 			else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT)
 			{
@@ -33,6 +33,5 @@ void	play(t_game *game)
 			refresh();
 		}
 		usleep(1000);
-		//update_board(game);
 	}
 }

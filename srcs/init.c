@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:09:26 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:24:01 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ static void	init_color_pair(void)
 
 
 	start_color();
-	init_pair(1, COLOR_BLACK, COLOR_WHITE);
-	init_pair(2, COLOR_RED, COLOR_BLUE);
-	init_pair(3, COLOR_YELLOW, COLOR_GREEN);
-	init_pair(4, COLOR_CYAN, COLOR_MAGENTA);
-	init_pair(5, COLOR_CYAN, COLOR_BLACK);
-	init_pair(6, COLOR_BLUE, COLOR_BLACK);
-	init_pair(7, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(8, COLOR_RED, COLOR_BLACK);
-	init_pair(9, COLOR_GREEN, COLOR_BLACK);
-	init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
+	init_pair(4, COLOR_BLUE, COLOR_BLACK);
+	init_pair(5, COLOR_GREEN, COLOR_BLACK);
+	init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(7, COLOR_CYAN, COLOR_BLACK);
+	init_pair(8, COLOR_MAGENTA, COLOR_CYAN);
+	init_pair(9, COLOR_GREEN, COLOR_MAGENTA);
+	init_pair(10, COLOR_BLUE, COLOR_GREEN);
+	init_pair(11, COLOR_RED, COLOR_BLUE);
+	init_pair(12, COLOR_YELLOW, COLOR_RED);
 	//bkgd(3);
 	//attrset(2);
 	attron(COLOR_PAIR(4));
