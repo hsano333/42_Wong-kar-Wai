@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   game2048.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 23:47:39 by hsano            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 # ifndef GAME2048_H
 # define GAME2048_H
@@ -47,8 +36,9 @@ typedef struct s_game
 	int			end_flag;
 	int			quit_flag;
 	int			best_score[5];
+	bool		moved;
 	game_mode	mode;
-	WINDOW		*win;	
+	WINDOW		*win;
 
 }	t_game;
 
@@ -85,4 +75,5 @@ void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe);
 void	clear_board(t_game *game);
 int		check_board(t_game *game);
 void	add_new_number(t_game *game);
+void	press_esc(t_game *game);
 #endif

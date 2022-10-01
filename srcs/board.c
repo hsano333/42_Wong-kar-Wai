@@ -32,29 +32,32 @@ void	add_new_number(t_game *game)
 		add_new_number(game);
 }
 
-static bool	plus_next(int *now, int *next, bool front)
+static void	plus_next(t_game *game, int *now, int *next, bool *front)
 {
-	if (*now == *next && !front)
+	if (*now && *now == *next && !*front)
 	{
 		*next *= 2;
 		*now = 0;
-		return (true);
+		*front = true;
+		game->moved = true;
+		game->score += *next;
 	}
-	return (false);
+	else
+		*front = false;
 }
 
-static bool	line_up_properly(int *now, int *next, bool front)
+static void	line_up_properly(t_game *game, int *now, int *next, bool *front)
 {
 	(void)front;
 	if (*now && !*next)
 	{
 		*next = *now;
 		*now = 0;
+		game->moved = true;
 	}
-	return (false);
 }
 
-static void	board_roop(const int start, const int end, const int dir, t_game *game, bool (*f)(int *, int *, bool))
+static void	board_roop(const int start, const int end, const int dir, t_game *game, void (*f)(t_game *, int *, int *, bool *))
 {
 	int			i[2];
 	int			i_end[2];
@@ -72,13 +75,9 @@ static void	board_roop(const int start, const int end, const int dir, t_game *ga
 		front = false;
 		while (i[1] != i_end[1])
 		{
-			// printw("now:board[%d][%d]=%d, ", i[!dir], i[dir], game->board[i[!dir]][i[dir]]);
-			// printw("now:board[%d][%d]=%d\n", i[!dir] + sign * !dir, i[dir] + sign * dir, game->board[i[!dir] + sign * !dir][i[dir] + sign * dir]);
 			now = &game->board[i[!dir]][i[dir]];
 			next = &game->board[i[!dir] + sign * !dir][i[dir] + sign * dir];
-			front = f(now, next, front);
-			if (front)
-				game->score += *next;
+			f(game, now, next, &front);
 			i[1] += sign;
 		}
 		i[0] ++;
@@ -102,6 +101,7 @@ void	send_key_board(int key, t_game *game)
 {
 	int	status;
 
+	game->moved = false;
 	if (key == KEY_UP)
 		move_board_number(0, game->grid_row_size - 1, 0, game);
 	else if (key == KEY_DOWN)
@@ -110,9 +110,12 @@ void	send_key_board(int key, t_game *game)
 		move_board_number(0, game->grid_col_size - 1, 1, game);
 	else if (key == KEY_RIGHT)
 		move_board_number(game->grid_col_size - 1, 0, 1, game);
-	status = check_board(game);
-	if ((!status || status == 1) && !game->end_flag)
-		add_new_number(game);
+	if (game->moved)
+	{
+		status = check_board(game);
+		if ((!status || status == 1) && !game->end_flag)
+			add_new_number(game);
+	}
 	update_board(game);
 	//refresh();
 }

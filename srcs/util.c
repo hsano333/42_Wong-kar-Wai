@@ -18,6 +18,16 @@ void	clear_board(t_game *game)
 void	init_board(t_game *game)
 {
 	clear_board(game);
-	add_new_number(game);
-	add_new_number(game);
+	for (int i = 0; i < 5; i ++)
+		game->board[3][i] = 2;
+	//add_new_number(game);
+	//add_new_number(game);
+}
+
+void	press_esc(t_game *game)
+{
+	attron(COLOR_PAIR(3));
+	printw("\nquit game\n");
+	game->quit_flag = true;
+	refresh();
 }

@@ -28,8 +28,8 @@ void test2(t_game *game)
 	game->board[0][2] = V32;
 	game->board[0][3] = V8;
 
-	game->board[1][0] = V4;
-	game->board[1][1] = V32;
+	//game->board[1][0] = V4;
+	//game->board[1][1] = V32;
 	game->board[1][2] = V16;
 	game->board[1][3] = V128;
 
@@ -53,6 +53,7 @@ int main(void)
 	game.win = initscr();
 	if (!init(&game))
 	{
+		attron(COLOR_PAIR(3));
 		printw("invalid win value");
 		refresh();
 		return (false);
@@ -62,6 +63,8 @@ int main(void)
 	while (!game.quit_flag)
 	{
 		menu(&game);
+		if (game.quit_flag)
+			break ;
 		clear_score(&game);
 		init_board(&game);
 		test2(&game);

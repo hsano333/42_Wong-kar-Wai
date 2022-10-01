@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 22:32:46 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 01:24:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void	print_menu(t_game *game, game_mode mode)
 	while (frame_row < AA_SIZE)
 	{
 		print_one_frame_line(game, row, frame_row, false);
-		//printw("%s\n", line);
 		frame_row++;
 	}
 	printw("\n\n                                                                                  select mode and press Enter\n");
@@ -90,7 +89,7 @@ void menu(t_game *game)
 		if ((c = getch()) != ERR) {
 			if (c == ESC_KEY)
 			{
-				game->quit_flag = true;
+				press_esc(game);
 				break ;
 			}
 			else if (c == KEY_UP || c == KEY_DOWN)
@@ -106,7 +105,6 @@ void menu(t_game *game)
 			}
 		}
 	}
-
 	if (mode == mode4x4)
 	{
 		game->grid_row_size= 4;
