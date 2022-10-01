@@ -50,7 +50,6 @@ static bool	line_up_properly(int *now, int *next, bool front)
 	{
 		*next = *now;
 		*now = 0;
-		return (true);
 	}
 	return (false);
 }
@@ -78,6 +77,8 @@ static void	board_roop(const int start, const int end, const int dir, t_game *ga
 			now = &game->board[i[!dir]][i[dir]];
 			next = &game->board[i[!dir] + sign * !dir][i[dir] + sign * dir];
 			front = f(now, next, front);
+			if (front)
+				game->score += *next;
 			i[1] += sign;
 		}
 		i[0] ++;
