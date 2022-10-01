@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game2048.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 00:43:29 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:23:52 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void	menu(t_game *game);
 void	update_board(t_game *game);
 void	play(t_game *game);
 void	send_key_board(int key, t_game *game);
+int		check_board(t_game *game);
 #endif

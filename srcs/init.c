@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:24:01 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 17:51:13 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void set_timeout(int time) {
 	time = 1;
 	timeout(1);
+	(void)time;
 }
 
 static void	init_board(t_game *game)
@@ -23,10 +24,16 @@ static void	init_board(t_game *game)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < 5)
+	{
+		j = 0;
 		while (j < 5)
-			game->board[i++][j++] = 0; // test
+		{
+			game->board[i][j] = 0;
+			j ++;
+		}
+		i ++;
+	}
 }
 
 static void	init_color_pair(void)

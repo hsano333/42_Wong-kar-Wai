@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:27:01 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:43:40 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 void	test(t_game *game)
 {
-	game->board[0][1] = V2;
-	game->board[2][2] = V2;
+	// game->board[0][1] = V2;
+	// game->board[2][2] = V2;
 
-	//game->board[0][0] = V2;
-	//game->board[0][1] = V2;
-	//game->board[0][2] = V8;
-	//game->board[0][3] = V16;
-	//game->board[0][4] = V32;
+	game->board[0][1] = V2;
+	game->board[1][1] = V8;
+	game->board[2][1] = V8;
+	game->board[3][1] = V8;
+	// game->board[1][4] = V2;
 
 	/*
 	game->board[0][0] = V2;
