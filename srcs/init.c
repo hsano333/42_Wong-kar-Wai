@@ -1,21 +1,10 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:06:20 by hsano            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "game2048.h"
 
 void set_timeout(int time) {
 	time = 1;
 	timeout(1);
 }
+
 static void	init_color_pair(void)
 {
 
@@ -91,9 +80,9 @@ int	init(t_game *game)
 	if (game->win_value == V1 || game->win_value == V2)
 		game->win_flag = true;
 	init_color_pair();
+	clear_board(game);
 	height = 0;
 	width = 0;
-
     srand(time(0));
 	set_timeout(1);
 	timeout(1);

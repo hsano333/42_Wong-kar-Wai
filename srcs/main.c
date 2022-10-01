@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:26:42 by hsano            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "game2048.h"
 #include "unistd.h"
 
@@ -18,7 +6,19 @@ void	test(t_game *game)
 	game->board[0][1] = V2;
 	game->board[2][2] = V2;
 
+	//game->board[0][0] = V2;
+	//game->board[0][1] = V2;
+	//game->board[0][2] = V8;
+	//game->board[0][3] = V16;
+	//game->board[0][4] = V32;
+
 	/*
+	game->board[0][0] = V2;
+	game->board[0][1] = V2;
+	game->board[0][2] = V8;
+	game->board[0][3] = V16;
+	game->board[0][4] = V32;
+
 	game->board[0][0] = V2;
 	game->board[0][1] = V2;
 	game->board[0][2] = V8;
@@ -56,7 +56,7 @@ int main(void)
 {
 	t_game	game;
 
-    game.win = initscr();
+	game.win = initscr();
 	if (!init(&game))
 	{
 		printf("invalid win value");
@@ -66,14 +66,16 @@ int main(void)
 	//usleep(1000000);
 
 	menu(&game);
+	test(&game);
 	//printw("%s\n", two[8]);
 	//printw("update board \n");
 	//update_board(&game);
 	//refresh();
 	//usleep(1000000);
 
-	test(&game);
 	if (!game.end_flag)
 		play(&game);
+	play(&game);
+
 	endwin();
 }
