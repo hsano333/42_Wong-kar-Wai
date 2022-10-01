@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 21:25:34 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 23:45:53 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ typedef struct s_game
 	int			end_flag;
 	int			quit_flag;
 	int			best_score[5];
+	bool		moved;
 	game_mode	mode;
-	WINDOW		*win;	
+	WINDOW		*win;
 
 }	t_game;
 
