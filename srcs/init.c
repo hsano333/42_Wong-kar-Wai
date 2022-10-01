@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 01:47:14 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:06:20 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	init_color_pair(void)
 	init_pair(10, COLOR_BLUE, COLOR_GREEN);
 	init_pair(11, COLOR_RED, COLOR_BLUE);
 	init_pair(12, COLOR_YELLOW, COLOR_RED);
+	init_pair(13, COLOR_RED, COLOR_GREEN);
+	init_pair(14, COLOR_RED, COLOR_CYAN);
 	//bkgd(3);
 	//attrset(2);
 	attron(COLOR_PAIR(4));
@@ -49,7 +51,9 @@ int	check_win_value(void)
 	int	number;
 
 	number = WIN_VALUE;
-	if (number == V2)
+	if (number == V1)
+		return (true);
+	else if (number == V2)
 		return (true);
 	else if (number == V4)
 		return (true);
@@ -79,12 +83,17 @@ int	init(t_game *game)
 	int	height;
 	int	width;
 
+	game->score = 0;
+	game->win_flag = 0;
 	if (!check_win_value())
 		return (false);
-	game->score = 0;
+	game->win_value = WIN_VALUE;
+	if (game->win_value == V1 || game->win_value == V2)
+		game->win_flag = true;
 	init_color_pair();
 	height = 0;
 	width = 0;
+
     srand(time(0));
 	set_timeout(1);
 	timeout(1);

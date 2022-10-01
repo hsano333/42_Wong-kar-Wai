@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:32:23 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 01:29:29 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:02:54 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	print_row_line(t_game *game)
 		line[206] = '\0';
 	else
 		line[165] = '\0';
+	attron(COLOR_PAIR(1));
 	printw("%s\n", line);
 }
 
-void	get_aa_number_wrapper(int row, int number)
+void	print_aa_number_wrapper(int row, int number)
 {
 	int	i;
 	char	line[41];
@@ -48,8 +49,6 @@ void	get_aa_number_wrapper(int row, int number)
 	i = 0;
 	while (i < 40)
 		line[i++] = ' ';
-	//if (number == 0)
-		//get_aa_zero(row, line);
 	if (number == V2)
 		get_aa_str2(row, line);
 	else if (number == V4)
@@ -82,31 +81,36 @@ void	get_aa_number_wrapper(int row, int number)
 		get_aa_str32768(row, line);
 	else if (number == V65536)
 		get_aa_str65536(row, line);
+	else if (number == V2048MENU)
+		get_aa_str2048_menu(row, line);
 	line[40] = '\0';
 	printw("%s",line);
 }
 
-void	print_pipe(void)
+void	print_pipe(int is_pipe)
 {
-	attron(COLOR_PAIR(1));
-	printw("%c", '|');
+	if (is_pipe)
+	{
+		attron(COLOR_PAIR(1));
+		printw("%c", '|');
+	}
 }
 
-void	print_one_frame_line(t_game *game, int row, int frame_row)
+void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe)
 {
-	print_pipe();
-	get_aa_number_wrapper(frame_row, game->board[row][0]);
-	print_pipe();
-	get_aa_number_wrapper(frame_row, game->board[row][1]);
-	print_pipe();
-	get_aa_number_wrapper(frame_row, game->board[row][2]);
-	print_pipe();
-	get_aa_number_wrapper(frame_row, game->board[row][3]);
-	print_pipe();
+	print_pipe(is_pipe);
+	print_aa_number_wrapper(frame_row, game->board[row][0]);
+	print_pipe(is_pipe);
+	print_aa_number_wrapper(frame_row, game->board[row][1]);
+	print_pipe(is_pipe);
+	print_aa_number_wrapper(frame_row, game->board[row][2]);
+	print_pipe(is_pipe);
+	print_aa_number_wrapper(frame_row, game->board[row][3]);
+	print_pipe(is_pipe);
 	if (game->grid_col_size == 5)
 	{
-		get_aa_number_wrapper(frame_row, game->board[row][4]);
-		print_pipe();
+		print_aa_number_wrapper(frame_row, game->board[row][4]);
+		print_pipe(is_pipe);
 	}
 	printw("\n");
 }
@@ -134,7 +138,7 @@ void	update_board(t_game *game)
 		frame_row = 0;
 		while (frame_row < AA_SIZE)
 		{
-			print_one_frame_line(game, row, frame_row);
+			print_one_frame_line(game, row, frame_row, true);
 			//printw("%s\n", line);
 			frame_row++;
 		}

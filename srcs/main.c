@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 01:47:42 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:26:42 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ int main(void)
 		return (false);
 	}
 	refresh();
-	usleep(1000000);
+	//usleep(1000000);
 
 	menu(&game);
 	//printw("%s\n", two[8]);
-	printw("update board \n");
-	update_board(&game);
-	refresh();
-	usleep(1000000);
+	//printw("update board \n");
+	//update_board(&game);
+	//refresh();
+	//usleep(1000000);
 
 	test(&game);
-	play(&game);
-
+	if (!game.end_flag)
+		play(&game);
 	endwin();
 }
