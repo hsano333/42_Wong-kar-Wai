@@ -6,20 +6,12 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 15:35:20 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:53:53 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 
-enum e_game_mode{
-	mode4x4 = 1, 
-	mode4x5 = 2, 
-	mode5x4 = 3, 
-	mode5x5 = 4, 
-};
-
-typedef enum e_game_mode game_mode;
 
 static void	print_selected_mode(int color, char *str)
 {
@@ -99,7 +91,7 @@ void menu(t_game *game)
 			clear();
 			if (c == ESC_KEY)
 			{
-				game->end_flag = true;
+				game->quit_flag = true;
 				break ;
 			}
 			else if (c == KEY_UP || c == KEY_DOWN)
@@ -134,5 +126,6 @@ void menu(t_game *game)
 		game->grid_row_size= 5;
 		game->grid_col_size= 5;
 	}
+	game->mode = mode;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game2048.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 21:25:34 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:40:08 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ enum e_number
 };
 
 int		init(t_game *game);
+int		get_best_score(game_mode mode);
+void	set_best_score(t_game *game, int score);
 void	clear_score(t_game *game);
 void	menu(t_game *game);
 void	update_board(t_game *game);
@@ -82,5 +84,4 @@ void	play(t_game *game);
 void	send_key_board(int key, t_game *game);
 void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe);
 void	clear_board(t_game *game);
-int		check_board(t_game *game);
 #endif

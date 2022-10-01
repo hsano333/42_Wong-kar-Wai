@@ -1,9 +1,9 @@
+
 #include "game2048.h"
 
 void set_timeout(int time) {
 	time = 1;
 	timeout(1);
-	(void)time;
 }
 
 static void	init_color_pair(void)
@@ -66,20 +66,13 @@ int	check_win_value(void)
 	return (false);
 }
 
-void	clear_score(t_game *game)
-{
-	game->score = 0;
-	game->win_flag = false;
-}
-
-int	init(t_game *game)
+int	init_bonus(t_game *game)
 {
 	int	height;
 	int	width;
 
 	game->score = 0;
 	game->win_flag = 0;
-	game->end_flag = 0;
 	if (!check_win_value())
 		return (false);
 	game->win_value = WIN_VALUE;
