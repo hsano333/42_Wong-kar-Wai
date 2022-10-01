@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 23:33:39 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:09:26 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ void set_timeout(int time) {
 	time = 1;
 	timeout(1);
 }
+
+static void	init_board(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < 5)
+		while (j < 5)
+			game->board[i++][j++] = 0; // test
+}
+
 static void	init_color_pair(void)
 {
 
@@ -80,10 +93,11 @@ int	init(t_game *game)
 	if (!check_win_value())
 		return (false);
 	game->score = 0;
+	init_board(game);
 	init_color_pair();
 	height = 0;
 	width = 0;
-    srand(time(0));
+	srand(time(0));
 	set_timeout(1);
 	timeout(1);
 	start_color();

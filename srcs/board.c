@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   board.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 22:02:05 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 00:04:42 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:09:02 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 
+/*
+	board[row][col]
+	row = 縦
+	col = 横
+*/
 
 int	get_two_or_four(void)
 {
@@ -28,17 +33,86 @@ int	get_random_value(int max)
 	return (rand() % max);
 }
 
+static void	add_new_number(t_game *game)
+{
+	int	*square;
+
+	square = &game->board[get_random_value(game->grid_row_size)][get_random_value(game->grid_col_size)];
+	if (!*square)
+		*square = get_two_or_four();
+	else
+		add_new_number(game);
+}
+
+static void	plus_next(int *now, int *next)
+{
+	if (*now == *next)
+	{
+		*next *= 2;
+		*now = 0;
+	}
+}
+
+static void	line_up_properly(int *now, int *next)
+{
+	if (*now && !*next)
+	{
+		*next = *now;
+		*now = 0;
+	}
+}
+
+static void	board_roop(const int start, const int end, const int dir, t_game *game, void (*f)(int *, int *))
+{
+	int	i[2];
+	int	i_end[2];
+	int	*now;
+	int	*next;
+	const int	sign = (start < end) * 2 - 1; 
+
+	i[0] = 0;
+	i_end[0] = game->grid_row_size * dir + game->grid_col_size * !dir;
+	while (i[0] < i_end[0])
+	{
+		i[1] = start;
+		i_end[1] = end;
+		while (i[1] != i_end[1])
+		{
+			now = &game->board[i[!dir]][i[dir]];
+			next = &game->board[i[!dir] + sign * !dir][i[dir] + sign * dir];
+			f(now, next);
+			i[1] += sign;
+		}
+		i[0] ++;
+	}
+}
+
+static void	move_board_number(const int start, const int end, const int dir, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < 4)
+		board_roop(end, start, dir, game, line_up_properly);
+	board_roop(start, end, dir, game, plus_next);
+	i = 0;
+	while (i++ < 4)
+		board_roop(end, start, dir, game, line_up_properly);
+}
+
 void	send_key_board(int key, t_game *game)
 {
-
 	if (key == KEY_UP)
-		game->board[0][0] = get_two_or_four();
+		move_board_number(0, game->grid_row_size - 1, 0, game);
 	else if (key == KEY_DOWN)
-		game->board[0][0] = V8;
+		move_board_number(game->grid_row_size - 1, 0, 0, game);
 	else if (key == KEY_LEFT)
-		game->board[0][0] = V16;
+		move_board_number(0, game->grid_col_size - 1, 1, game);
 	else if (key == KEY_RIGHT)
-		game->board[0][0] = V32;
+		move_board_number(game->grid_col_size - 1, 0, 1, game);
+	add_new_number(game);
 	update_board(game);
 	//refresh();
 }
+
+// left up

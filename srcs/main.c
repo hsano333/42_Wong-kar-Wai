@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
+/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 00:04:06 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 15:09:21 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,25 @@
 
 void	test(t_game *game)
 {
-	game->board[0][1] = V2;
-	game->board[2][2] = V2;
+	for (int i = 0; i < 5; i ++)
+		for (int j = 0; j < 5; j ++)
+			game->board[i][j] = 0;
+	// game->board[0][1] = V2;
+	// game->board[2][2] = V2;
 
-	//game->board[0][0] = V2;
-	//game->board[0][1] = V2;
-	//game->board[0][2] = V8;
-	//game->board[0][3] = V16;
-	//game->board[0][4] = V32;
+	game->board[0][0] = V2;
+	game->board[1][0] = V2;
+	game->board[2][0] = V4;
+	game->board[3][0] = V8;
+	// game->board[1][4] = V16;
+
+	game->board[0][1] = V8;
+	game->board[1][1] = V4;
+	game->board[2][1] = V2;
+	game->board[3][1] = V2;
+	// game->board[1][4] = V1024;
 
 	/*
-	game->board[1][0] = V64;
-	game->board[1][1] = V128;
-	game->board[1][2] = V256;
-	game->board[1][3] = V512;
-	game->board[1][4] = V1024;
-
 	game->board[2][0] = V2048;
 	game->board[2][1] = V4096;
 	game->board[2][2] = V8192;
@@ -56,7 +59,7 @@ int main(void)
 {
 	t_game	game;
 
-    game.win = initscr();
+	game.win = initscr();
 	if (!init(&game))
 	{
 		printf("invalid win value");
@@ -66,13 +69,13 @@ int main(void)
 	usleep(1000000);
 
 	menu(&game);
+	test(&game);
 	//printw("%s\n", two[8]);
 	printw("update board \n");
 	update_board(&game);
 	refresh();
 	usleep(1000000);
 
-	test(&game);
 	play(&game);
 
 	endwin();
