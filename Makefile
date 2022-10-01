@@ -8,13 +8,14 @@ LIBFT		:=
 OBJDIR		:= ./obj
 
 SRCDIR	:= ./srcs/
-SRC	:= init.c menu.c print_borad.c numbers.c two_powers.c play.c board.c util.c
+SRC	:= init.c menu.c print_borad.c numbers.c two_powers.c play.c board.c util.c ft_atoi.c ft_itoa.c
 ENTRY	:= main.c
 ENTRYBONUS	:= main_bonus.c
 DELENTRY	:= $(OBJDIR)/main_bonus.o
 ifdef WITH_BONUS
 ENTRY	:= $(ENTRYBONUS)
 DELENTRY	:= $(OBJDIR)/main.o
+SRC	+= best_score.c 
 endif
 SRC	+= $(ENTRY)
 
@@ -30,7 +31,11 @@ LFLAGS	:= $(addprefix -L,$(LIBDIRS))
 LIBS	:= $(LIBFT)
 
 CC	:= cc
+ifdef WITH_BONUS
+CFLAGS	:= -Wall -Wextra -Werror -D WITH_BONUS=1
+else
 CFLAGS	:= -Wall -Wextra -Werror
+endif
 LDFLAGS := $(IFLAGS) $(LFLAGS) -lncurses
 
 all:
@@ -51,6 +56,7 @@ clean	:
 			$(RM) $(DEPS)
 			$(RM) $(OBJDIR)/$(ENTRYBONUS:.c=.o)
 			$(RM) $(OBJDIR)/$(ENTRYBONUS:.c=.d)
+			$(RM) $(SRC)/best_score.c
 
 fclean	:	clean
 			$(RM) $(NAME)

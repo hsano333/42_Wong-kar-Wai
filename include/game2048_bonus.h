@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 20:20:40 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:40:08 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ enum e_number
 };
 
 int		init(t_game *game);
+int		get_best_score(game_mode mode);
+void	set_best_score(t_game *game, int score);
 void	clear_score(t_game *game);
 void	menu(t_game *game);
 void	update_board(t_game *game);
