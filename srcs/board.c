@@ -32,9 +32,9 @@ void	add_new_number(t_game *game)
 		add_new_number(game);
 }
 
-static void	plus_next(t_game *game, int *now, int *next, bool front)
+static void	plus_next(t_game *game, int *now, int *next, bool *front)
 {
-	if (*now == *next && !front)
+	if (*now == *next && !*front)
 	{
 		*next *= 2;
 		*now = 0;
@@ -43,7 +43,7 @@ static void	plus_next(t_game *game, int *now, int *next, bool front)
 	}
 }
 
-static void	line_up_properly(t_game *game, int *now, int *next, bool front)
+static void	line_up_properly(t_game *game, int *now, int *next, bool *front)
 {
 	(void)front;
 	if (*now && !*next)
@@ -54,7 +54,7 @@ static void	line_up_properly(t_game *game, int *now, int *next, bool front)
 	}
 }
 
-static void	board_roop(const int start, const int end, const int dir, t_game *game, void (*f)(t_game *, int *, int *, bool))
+static void	board_roop(const int start, const int end, const int dir, t_game *game, void (*f)(t_game *, int *, int *, bool *))
 {
 	int			i[2];
 	int			i_end[2];
