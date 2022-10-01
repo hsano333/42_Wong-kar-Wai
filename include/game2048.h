@@ -6,7 +6,7 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:23:52 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/01 19:57:07 by smiyu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,18 @@
 
 #define AA_SIZE 8
 #define ESC_KEY 27
-//#define UP_KEY
+#define ENTER_KEY 10
 
 typedef struct s_game
 {
 	int		win_value;
+	int		win_flag;
 	int		grid_row_size;
 	int		grid_col_size;
 	int		board[5][5];
 	int		score;
+	int		max_score;
+	int		end_flag;
 	WINDOW	*win;	
 
 }	t_game;
@@ -41,6 +44,7 @@ enum e_const
 
 enum e_number
 {
+	V1 = 1, 
 	V2 = 2, 
 	V4 = 4, 
 	V8 = 8, 
@@ -57,6 +61,7 @@ enum e_number
 	V16384 = 16384,
 	V32768 = 32768,
 	V65536 = 65536,
+	V2048MENU = 1000000,
 };
 
 int		init(t_game *game);
@@ -64,5 +69,7 @@ void	menu(t_game *game);
 void	update_board(t_game *game);
 void	play(t_game *game);
 void	send_key_board(int key, t_game *game);
+void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe);
+void	clear_board(t_game *game);
 int		check_board(t_game *game);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 00:42:40 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 13:50:33 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ void	play(t_game *game)
 				break ;
 			else if (c == KEY_UP || c == KEY_DOWN || c == KEY_LEFT || c == KEY_RIGHT)
 			{
-				printw("key=%d\n", c);
+				attron(COLOR_PAIR(1));
+				if (game->win_flag)
+				{
+					printw("score=%d  ", game->score);
+					attron(COLOR_PAIR(13));
+					printw("victory\n");
+				}
+				else 
+					printw("score=%d\n", game->score);
 				send_key_board(c, game);
 			}
 			printw("%d\n", c);

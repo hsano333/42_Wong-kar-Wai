@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:50:58 by hsano             #+#    #+#             */
-/*   Updated: 2022/09/30 20:44:46 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/01 14:56:50 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	get_aa_str8192(int row, char *line);
 void	get_aa_str16384(int row, char *line);
 void	get_aa_str32768(int row, char *line);
 void	get_aa_str65536(int row, char *line);
+void	get_aa_str2048_menu(int row, char *line);
 
 #endif

@@ -1,28 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/30 13:11:35 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:43:40 by smiyu            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "game2048.h"
 #include "unistd.h"
 
 void	test(t_game *game)
 {
-	// game->board[0][1] = V2;
-	// game->board[2][2] = V2;
-
 	game->board[0][1] = V2;
-	game->board[1][1] = V8;
-	game->board[2][1] = V8;
-	game->board[3][1] = V8;
-	// game->board[1][4] = V2;
+	game->board[2][2] = V2;
+
+	//game->board[0][0] = V2;
+	//game->board[0][1] = V2;
+	//game->board[0][2] = V8;
+	//game->board[0][3] = V16;
+	//game->board[0][4] = V32;
 
 	/*
 	game->board[0][0] = V2;
@@ -75,16 +63,18 @@ int main(void)
 		return (false);
 	}
 	refresh();
-	usleep(1000000);
+	//usleep(1000000);
 
 	menu(&game);
 	test(&game);
 	//printw("%s\n", two[8]);
-	printw("update board \n");
-	update_board(&game);
-	refresh();
-	usleep(1000000);
+	//printw("update board \n");
+	//update_board(&game);
+	//refresh();
+	//usleep(1000000);
 
+	if (!game.end_flag)
+		play(&game);
 	play(&game);
 
 	endwin();
