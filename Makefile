@@ -52,7 +52,8 @@ clean	:
 			$(RM) $(DEPS)
 			$(RM) $(OBJDIR)/$(ENTRYBONUS:.c=.o)
 			$(RM) $(OBJDIR)/$(ENTRYBONUS:.c=.d)
-			$(RM) $(SRC)/best_score.c
+			$(RM) $(OBJDIR)/best_score.o $(OBJDIR)/best_score.d
+
 
 fclean	:	clean
 			$(RM) $(NAME)
