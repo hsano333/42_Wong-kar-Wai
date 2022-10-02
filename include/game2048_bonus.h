@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:05:48 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 14:16:19 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 15:46:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe);
 void	clear_board(t_game *game);
 int		check_board(t_game *game);
 void	add_new_number(t_game *game);
+void	init_game(t_game *game);
 
 int		get_best_score(game_mode mode);
 void	set_best_score(t_game *game, int score);

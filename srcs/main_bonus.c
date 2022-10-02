@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:42:44 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 14:28:50 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 15:46:14 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "game2048_bonus.h"
@@ -31,24 +31,21 @@ int main(void)
 	game.win = initscr();
 	if (!init(&game))
 	{
+		attron(COLOR_PAIR(3));
 		printw("invalid win value");
 		refresh();
 		return (false);
 	}
-	//refresh();
 	load_best_score(&game);
 	while (!game.quit_flag)
 	{
 		mode = menu(&game);
 		if (game.quit_flag)
 			break ;
-		clear_score(&game);
-		init_board(&game);
+		init_game(&game);
 		play(&game);
-		refresh();
 		if (game.score > game.best_score[mode])
 		{
-			//game.best_score[game.mode] = game.score;
 			set_best_score(&game, game.score);
 		}
 	}
