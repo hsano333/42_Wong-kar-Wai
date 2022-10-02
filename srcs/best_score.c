@@ -42,7 +42,7 @@ int parse_score(char *buf, game_mode mode, char *num)
 	err = false;
 	best_score = ft_atoi(num, &err);
 	if (err)
-		return (3);
+		return (0);
 	refresh();
 	return (best_score);
 }
@@ -58,12 +58,12 @@ int	get_best_score(game_mode mode)
 	best_score = 0;
 	fd = open(SCORE_FILE, O_RDONLY);
 	if (fd < 0)
-		return (1);
+		return (0);
 	else
 	{
 		read_num = read(fd, buf, 128);
 		if (read_num < 0 || read_num > 64)
-			return (2);
+			return (0);
 		buf[read_num - 1] = '\0';
 		best_score = parse_score(buf, mode, num);
 	}
