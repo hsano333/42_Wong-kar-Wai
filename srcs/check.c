@@ -2,14 +2,13 @@
 
 static bool	check_board_win(t_game *game, int i, int j)
 {
-	if (game->board[i][j] == V2048)
+	if (game->board[i][j] >= V2048)
 		game->end_flag = true;
-
-	if (game->board[i][j] == game->win_value)
-	{
+	if (game->board[i][j] >= game->win_value)
 		game->win_flag = true;
+
+	if (game->board[i][j] == V2048)
 		return (true);
-	}
 	else
 		return (false);
 }
@@ -46,9 +45,8 @@ static int	check_board_roop(t_game *game, bool (*f)(t_game *, int, int))
 
 int	check_board(t_game *game)
 {
-	if (check_board_roop(game, check_board_win))
-		return (0);
-	else if (check_board_roop(game, check_board_empty))
+	check_board_roop(game, check_board_win);
+	if (check_board_roop(game, check_board_empty))
 		return (1);
 	else if (check_board_roop(game, check_board_mergeable))
 		return (2);
