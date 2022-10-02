@@ -1,6 +1,8 @@
 #include "game2048.h"
 #include "unistd.h"
 
+
+
 void	load_best_score(t_game *game)
 {
 	game_mode	mode;
@@ -39,3 +41,4 @@ int main(void)
 	}
 	endwin();
 }
+

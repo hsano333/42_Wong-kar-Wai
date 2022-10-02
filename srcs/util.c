@@ -4,6 +4,7 @@ void	clear_score(t_game *game)
 {
 	game->score = 0;
 	game->end_flag = false;
+	game->win_flag = false;
 }
 
 void	clear_board(t_game *game)
