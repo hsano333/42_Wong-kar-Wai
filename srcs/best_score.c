@@ -5,7 +5,7 @@
 #include "sys/stat.h"
 #include "fcntl.h"
 
-#define SCORE_FILE "best_score"
+#define SCORE_FILE ".best_score"
 
 #define MODE_STR1 "4x4:"
 #define MODE_STR2 "4x5:"
