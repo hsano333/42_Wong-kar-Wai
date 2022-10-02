@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:42:44 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 15:46:14 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 16:30:04 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "game2048_bonus.h"
@@ -45,9 +45,7 @@ int main(void)
 		init_game(&game);
 		play(&game);
 		if (game.score > game.best_score[mode])
-		{
 			set_best_score(&game, game.score);
-		}
 	}
 	endwin();
 }
