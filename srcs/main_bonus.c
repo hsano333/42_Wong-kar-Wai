@@ -6,10 +6,11 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:42:44 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 16:30:04 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 19:50:39 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "game2048_bonus.h"
+#include "game2048.h"
+#include "best_score.h"
 
 void	load_best_score(t_game *game)
 {
