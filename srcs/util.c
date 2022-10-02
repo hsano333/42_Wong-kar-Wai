@@ -23,6 +23,7 @@ void	init_board(t_game *game)
 	clear_board(game);
 	add_new_number(game);
 	add_new_number(game);
+	check_board(game);
 }
 
 void	press_esc(t_game *game)
