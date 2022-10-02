@@ -10,7 +10,7 @@ void	clear_board(t_game *game)
 {
 	for (int i = 0; i < 5; i ++)
 		for (int j = 0; j < 5; j ++)
-			game->board[i][j] = 0; // test
+			game->board[i][j] = 0;
 }
 
 int	have_four(t_game *game)

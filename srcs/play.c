@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 16:08:34 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 17:16:14 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	print_score(t_game *game)
 	else 
 		printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
 	attron(COLOR_PAIR(1));
-
 }
 
 static void	print_game_over(t_game *game)
@@ -35,8 +34,16 @@ static void	print_game_over(t_game *game)
 	clear();
 	update_board(game);
 	print_score(game);
-	attron(COLOR_PAIR(3));
-	printw("\ngame over\n");
+	if (game->win_flag)
+	{
+		attron(COLOR_PAIR(7));
+		printw("\ngame clear\n");
+	}
+	else
+	{
+		attron(COLOR_PAIR(3));
+		printw("\ngame over\n");
+	}
 	attron(COLOR_PAIR(1));
 	printw("Press Enter, so back to Menu\n");
 }

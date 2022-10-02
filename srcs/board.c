@@ -115,5 +115,4 @@ void	send_key_board(int key, t_game *game)
 		add_new_number(game);
 	check_board(game);
 	update_board(game);
-	//refresh();
 }

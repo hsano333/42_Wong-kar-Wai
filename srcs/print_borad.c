@@ -6,28 +6,12 @@
 /*   By: smiyu <smiyu@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 16:32:23 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/01 19:58:20 by smiyu            ###   ########.fr       */
+/*   Updated: 2022/10/02 17:11:20 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 #include "numbers.h"
-
-/*
-static void	set_frame(t_game *game, char *line)
-{
-	line[0] = '|';
-	line[41] = '|';
-	line[82] = '|';
-	line[123] = '|';
-	line[164] = '|';
-	line[205] = '|';
-	if (game->grid_col_size == 5)
-		line[206] = '\0';
-	else
-		line[165] = '\0';
-}
-*/
 
 void	print_row_line(t_game *game)
 {
@@ -117,17 +101,10 @@ void	print_one_frame_line(t_game *game, int row, int frame_row, int is_pipe)
 
 void	update_board(t_game *game)
 {
-	//char	line[256];
 	int		row;
 	int		frame_row;
 	int		row_max;
 
-	//clear();
-	//printw("test \n");
-	//printw("game:%p\n", game);
-	//
-	//
-	
 	row = 0;
 	row_max = AA_SIZE;
 	if (game->grid_col_size == 5)
@@ -139,7 +116,6 @@ void	update_board(t_game *game)
 		while (frame_row < AA_SIZE)
 		{
 			print_one_frame_line(game, row, frame_row, true);
-			//printw("%s\n", line);
 			frame_row++;
 		}
 		row++;
