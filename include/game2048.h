@@ -76,4 +76,5 @@ void	clear_board(t_game *game);
 int		check_board(t_game *game);
 void	add_new_number(t_game *game);
 void	press_esc(t_game *game);
+void	init_game(t_game *game);
 #endif

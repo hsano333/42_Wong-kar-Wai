@@ -32,6 +32,12 @@ void	init_board(t_game *game)
 	check_board(game);
 }
 
+void	init_game(t_game *game)
+{
+		clear_score(game);
+		init_board(game);
+}
+
 void	press_esc(t_game *game)
 {
 	attron(COLOR_PAIR(3));
