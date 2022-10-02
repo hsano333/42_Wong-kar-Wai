@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 14:16:01 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 16:05:18 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	 menu(t_game *game)
 	while (1)
 	{
 		if ((c = getch()) != ERR) {
+			clear();
+			print_menu(&tmp_game, mode);
 			if (c == ESC_KEY)
 			{
 				press_esc(game);

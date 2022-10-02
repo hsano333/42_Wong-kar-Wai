@@ -6,33 +6,13 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 14:55:22 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 16:08:34 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game2048.h"
 #include "unistd.h"
 
-void	game_over(t_game *game)
-{
-	int	c;
-	attron(COLOR_PAIR(3));
-	printw("\ngame over\n");
-	attron(COLOR_PAIR(1));
-	printw("Press Enter, so back to Menu\n");
-	while (1)
-	{
-		if ((c = getch()) != ERR) 
-		{
-			if (c == ESC_KEY) {
-				press_esc(game);
-				break ;
-			}
-			else if (c == ENTER_KEY)
-				break ;
-		}
-	}
-}
 
 void	print_score(t_game *game)
 {
@@ -49,6 +29,38 @@ void	print_score(t_game *game)
 
 }
 
+static void	print_game_over(t_game *game)
+{
+
+	clear();
+	update_board(game);
+	print_score(game);
+	attron(COLOR_PAIR(3));
+	printw("\ngame over\n");
+	attron(COLOR_PAIR(1));
+	printw("Press Enter, so back to Menu\n");
+}
+
+void	game_over(t_game *game)
+{
+	int	c;
+
+	print_game_over(game);
+	while (1)
+	{
+		if ((c = getch()) != ERR) 
+		{
+			print_game_over(game);
+			if (c == ESC_KEY) {
+				press_esc(game);
+				break ;
+			}
+			else if (c == ENTER_KEY)
+				break ;
+		}
+	}
+}
+
 void	play(t_game *game)
 {
 	int	c;
@@ -59,7 +71,9 @@ void	play(t_game *game)
 	{
 		if ((c = getch()) != ERR) 
 		{
-
+			clear();
+			update_board(game);
+			print_score(game);
 			if (c == ESC_KEY)
 			{
 				press_esc(game);
@@ -70,7 +84,6 @@ void	play(t_game *game)
 				clear();
 				send_key_board(c, game);
 				print_score(game);
-
 			}
 			refresh();
 			if (game->end_flag) {
