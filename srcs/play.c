@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 01:25:30 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 14:24:01 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,10 @@
 void	game_over(t_game *game)
 {
 	int	c;
-	//clear();
 	attron(COLOR_PAIR(3));
 	printw("\ngame over\n");
 	attron(COLOR_PAIR(1));
 	printw("Press Enter, so back to Menu\n");
-	//if (game->win_flag)
-	//{
-		//printw("score:%d, best score:%d  ", game->score, game->max_score);
-		//attron(COLOR_PAIR(13));
-		//printw("victory\n");
-	//}
-	//else 
-		//printw("score:%d, best score:%d\n", game->score, game->max_score);
-
 	while (1)
 	{
 		if ((c = getch()) != ERR) 
@@ -67,12 +57,12 @@ void	play(t_game *game)
 				attron(COLOR_PAIR(1));
 				if (game->win_flag)
 				{
-					printw("score:%d, best score:%d  ", game->score, game->max_score);
+					printw("score:%d, best score:%d  ", game->score, game->best_score[game->mode]);
 					attron(COLOR_PAIR(13));
 					printw("victory\n");
 				}
 				else 
-					printw("score:%d, best score:%d\n", game->score, game->max_score);
+					printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
 			}
 			refresh();
 			if (game->end_flag) {

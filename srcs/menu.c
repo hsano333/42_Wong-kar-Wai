@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 13:18:06 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 01:24:34 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 14:16:01 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static game_mode	select_mode(game_mode now_mode, int key)
 	return (mode);
 }
 
-void menu(t_game *game)
+int	 menu(t_game *game)
 {
 	game_mode	mode;
 	t_game	tmp_game;
@@ -126,5 +126,6 @@ void menu(t_game *game)
 		game->grid_col_size= 5;
 	}
 	game->mode = mode;
+	return (mode);
 }
 

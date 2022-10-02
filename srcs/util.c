@@ -3,8 +3,11 @@
 void	clear_score(t_game *game)
 {
 	game->score = 0;
-	game->win_flag = false;
 	game->end_flag = false;
+	if (game->win_value == V1 || game->win_value == V2)
+		game->win_flag = true;
+	else
+		game->win_flag = false;
 }
 
 void	clear_board(t_game *game)
@@ -18,10 +21,8 @@ void	clear_board(t_game *game)
 void	init_board(t_game *game)
 {
 	clear_board(game);
-	for (int i = 0; i < 5; i ++)
-		game->board[3][i] = 2;
-	//add_new_number(game);
-	//add_new_number(game);
+	add_new_number(game);
+	add_new_number(game);
 }
 
 void	press_esc(t_game *game)

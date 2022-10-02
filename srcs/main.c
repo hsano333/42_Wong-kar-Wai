@@ -22,14 +22,13 @@ void	load_best_score(t_game *game)
 
 void test2(t_game *game)
 {
-
 	game->board[0][0] = V16;
 	game->board[0][1] = V64;
 	game->board[0][2] = V32;
 	game->board[0][3] = V8;
 
-	//game->board[1][0] = V4;
-	//game->board[1][1] = V32;
+	game->board[1][0] = V4;
+	game->board[1][1] = V32;
 	game->board[1][2] = V16;
 	game->board[1][3] = V128;
 
@@ -42,6 +41,30 @@ void test2(t_game *game)
 	game->board[3][1] = V8;
 	game->board[3][2] = V4;
 	game->board[3][3] = V2;
+
+
+}
+void test3(t_game *game)
+{
+	game->board[0][0] = V4;
+	game->board[0][1] = V16;
+	game->board[0][2] = V32;
+	game->board[0][3] = V8;
+
+	game->board[1][0] = V32;
+	game->board[1][1] = V256;
+	game->board[1][2] = V16;
+	game->board[1][3] = V4;
+
+	game->board[2][0] = V4;
+	game->board[2][1] = V16;
+	game->board[2][2] = V8;
+	game->board[2][3] = V2;
+
+	game->board[3][0] = V2;
+	game->board[3][1] = V4;
+	game->board[3][2] = V2;
+	game->board[3][3] = V4;
 
 
 }
@@ -67,7 +90,7 @@ int main(void)
 			break ;
 		clear_score(&game);
 		init_board(&game);
-		test2(&game);
+		//test3(&game);
 		play(&game);
 		if (game.score > game.best_score[game.mode])
 			game.best_score[game.mode] = game.score;

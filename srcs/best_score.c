@@ -13,19 +13,6 @@
 #define MODE_STR4 "5x5:"
 
 #include "unistd.h"
-
-#ifndef WITH_BONUS
-int	get_best_score(game_mode mode)
-{
-	if (mode == mode4x4)
-		return (0);
-	return (0);
-}
-void	set_best_score(t_game *game, int score)
-{
-	game->best_score[game->mode] = score;
-}
-#else
 int parse_score(char *buf, game_mode mode, char *num)
 {
 	int	i;
@@ -128,4 +115,3 @@ void	set_best_score(t_game *game, int score)
 	write_best_score(game, fd, mode5x5);
 	close(fd);
 }
-#endif

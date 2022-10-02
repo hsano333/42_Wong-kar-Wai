@@ -31,11 +31,7 @@ LFLAGS	:= $(addprefix -L,$(LIBDIRS))
 LIBS	:= $(LIBFT)
 
 CC	:= cc
-ifdef WITH_BONUS
-CFLAGS	:= -Wall -Wextra -Werror -D WITH_BONUS=1
-else
 CFLAGS	:= -Wall -Wextra -Werror
-endif
 LDFLAGS := $(IFLAGS) $(LFLAGS) -lncurses
 
 all:

@@ -14,7 +14,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 128
+	WIN_VALUE = 2048
 };
 
 enum e_game_mode{
@@ -67,7 +67,7 @@ enum e_number
 int		init(t_game *game);
 void	clear_score(t_game *game);
 void	init_board(t_game *game);
-void	menu(t_game *game);
+int		menu(t_game *game);
 void	update_board(t_game *game);
 void	play(t_game *game);
 void	send_key_board(int key, t_game *game);
