@@ -4,10 +4,6 @@ void	clear_score(t_game *game)
 {
 	game->score = 0;
 	game->end_flag = false;
-	if (game->win_value == V1 || game->win_value == V2)
-		game->win_flag = true;
-	else
-		game->win_flag = false;
 }
 
 void	clear_board(t_game *game)
@@ -33,9 +29,7 @@ void	init_board(t_game *game)
 	clear_board(game);
 	add_new_number(game);
 	add_new_number(game);
-	if (have_four(game))
-		game->win_flag = true;
-
+	check_board(game);
 }
 
 void	press_esc(t_game *game)

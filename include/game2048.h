@@ -14,7 +14,7 @@
 
 enum e_const
 {
-	WIN_VALUE = 4
+	WIN_VALUE = 2048
 };
 
 enum e_game_mode{
