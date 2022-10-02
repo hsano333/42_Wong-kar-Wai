@@ -110,12 +110,9 @@ void	send_key_board(int key, t_game *game)
 		move_board_number(0, game->grid_col_size - 1, 1, game);
 	else if (key == KEY_RIGHT)
 		move_board_number(game->grid_col_size - 1, 0, 1, game);
-	if (game->moved)
-	{
-		status = check_board(game);
-		if ((!status || status == 1) && !game->end_flag)
-			add_new_number(game);
-	}
+	status = check_board(game);
+	if ((!status || status == 1) && game->moved && !game->end_flag)
+		add_new_number(game);
 	update_board(game);
 	//refresh();
 }
