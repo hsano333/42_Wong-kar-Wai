@@ -17,12 +17,25 @@ void	clear_board(t_game *game)
 			game->board[i][j] = 0; // test
 }
 
+int	have_four(t_game *game)
+{
+	if (game->win_value != V4)
+		return (false);
+	for (int i = 0; i < 5; i ++)
+		for (int j = 0; j < 5; j ++)
+			if (game->board[i][j] == V4)
+				return (true);
+	return (false);
+}
 
 void	init_board(t_game *game)
 {
 	clear_board(game);
 	add_new_number(game);
 	add_new_number(game);
+	if (have_four(game))
+		game->win_flag = true;
+
 }
 
 void	press_esc(t_game *game)

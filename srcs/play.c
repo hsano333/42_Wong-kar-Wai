@@ -6,7 +6,7 @@
 /*   By: hsano <hsano@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 21:43:43 by hsano             #+#    #+#             */
-/*   Updated: 2022/10/02 14:24:01 by hsano            ###   ########.fr       */
+/*   Updated: 2022/10/02 14:55:22 by hsano            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,27 @@ void	game_over(t_game *game)
 	}
 }
 
+void	print_score(t_game *game)
+{
+	attron(COLOR_PAIR(1));
+	if (game->win_flag)
+	{
+		printw("score:%d, best score:%d  ", game->score, game->best_score[game->mode]);
+		attron(COLOR_PAIR(13));
+		printw("victory\n");
+	}
+	else 
+		printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
+	attron(COLOR_PAIR(1));
+
+}
+
 void	play(t_game *game)
 {
 	int	c;
 
 	update_board(game);
-	printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
+	print_score(game);
 	while (1)
 	{
 		if ((c = getch()) != ERR) 
@@ -54,15 +69,8 @@ void	play(t_game *game)
 			{
 				clear();
 				send_key_board(c, game);
-				attron(COLOR_PAIR(1));
-				if (game->win_flag)
-				{
-					printw("score:%d, best score:%d  ", game->score, game->best_score[game->mode]);
-					attron(COLOR_PAIR(13));
-					printw("victory\n");
-				}
-				else 
-					printw("score:%d, best score:%d\n", game->score, game->best_score[game->mode]);
+				print_score(game);
+
 			}
 			refresh();
 			if (game->end_flag) {

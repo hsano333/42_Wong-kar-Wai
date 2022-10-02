@@ -23,15 +23,6 @@ static void	init_color_pair(void)
 	init_pair(12, COLOR_YELLOW, COLOR_RED);
 	init_pair(13, COLOR_RED, COLOR_GREEN);
 	init_pair(14, COLOR_RED, COLOR_CYAN);
-	//bkgd(3);
-	//attrset(2);
-	attron(COLOR_PAIR(4));
-
-	if (has_colors())
-		printw("color OK\n");
-	else
-		printw("color NG\n");
-
 }
 
 int	check_win_value(void)
@@ -71,12 +62,12 @@ int	init(t_game *game)
 	game->score = 0;
 	game->win_flag = 0;
 	game->end_flag = 0;
+	init_color_pair();
 	if (!check_win_value())
 		return (false);
 	game->win_value = WIN_VALUE;
 	if (game->win_value == V1 || game->win_value == V2)
 		game->win_flag = true;
-	init_color_pair();
 	clear_board(game);
     srand(time(0));
 	set_timeout(1);
